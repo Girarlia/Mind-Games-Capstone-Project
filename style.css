@@ -4,6 +4,8 @@ body{
   margin: 0 auto;
 }
 
+/*Main Page*/
+
 /*header*/
 
 .siteHeader{
@@ -36,11 +38,40 @@ header h1 {
   font-size: 4em;
 }
 
-/*Main Page*/
+/*Body*/
 
 h2{
   font-size: 4em;
   font-weight: bold;
   padding-top: 20px;
   padding-left: 10px;
+}
+
+
+/*Master Mind Game*/
+
+
+.guessANumber{
+  font-size: 3em;
+  padding: 60px 0 20px 10px;
+}
+
+.userGuess{
+  padding: 30px;
+  font-size: 30px;
+}
+
+.userGuessButton{
+  margin: 50px;
+  padding: 20px 0 20px 0;
+  font-size: 30px;
+  font-style: bold;
+}
+
+.outputBox{
+  border: black solid 2px;
+}
+p{
+  font-size: 30px;
+  font-weight: bold;
 }
