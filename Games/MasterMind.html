@@ -9,17 +9,43 @@
   <body>
     <header class = "siteHeader">
       <h1> Mind Games </h1>
+
     </header>
+
+    <nav class = "siteNav">
+      <li class = "siteNavTab"><a href="newPage"> Word</a></li>
+      <li class = "siteNavTab"><a href="newPage"> Memory</a></li>
+      <li class = "siteNavTab"><a href="Games/MasterMind.html"> Logic</a></li>
+    </nav>
 
     <header class = "gameHeader">
       <h2> Master Mind </h2>
     </header>
 
     <h3 class = "guessANumber"> Guess a 4-digit Number: </h3>
-      <input type = "text" id = "userGuess">
-      <input type = "submit" id = "userGuessButton">
+
+        <input type = "text" class = "guessBox" id = "userGuess1">
+        <input type = "text" class = "guessBox" id = "userGuess2">
+        <input type = "text" class = "guessBox" id = "userGuess3">
+        <input type = "text" class = "guessBox" id = "userGuess4">
+
+        <input type = "submit" id = "userGuessButton">
+
       <div id = "outputBox">
         <p> OUTPUT </p>
+          <table class="output-table">
+            <thead>
+              <tr class= "tableRow">
+                <th class="tableHead"> Right Number Right Spot </th>
+                <th class="tableHead"> Right Number Wrong Spot</th>
+                <th class="tableHead"> No Match </th>
+              </tr>
+            </thead>
+          <tbody>
+            <tr class = "tableRow">
+            </tr>
+          </tbody>
+
       </div>
 
   </body>
