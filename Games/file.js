@@ -1,6 +1,7 @@
 
 // TODO: make sure that mysteryNum is always aa 4-digit number...
-var mysteryNum = Math.floor(Math.random()*10000+1);
+// var mysteryNum = Math.floor(Math.random()*10000+1);
+var mysteryNum = 1234;
 var guessCounter = 0;
 
 
@@ -15,21 +16,43 @@ function convertToSingleNum(e) {
   ]
   var answerDigits = mysteryNum.toString().split('');
 
+  console.log("this is the answer: " + answerDigits);
+  console.log("this was your guess: " + userGuessDigits);
+
 
 // separated version...
   var rnr = 0;
   var removeIndices = userGuessDigits.map(function(digit, i){
     if (digit == answerDigits[i]) {
       rnr++;
-      return i;
+      return digit;
     }
   })
 
-  removeIndices.forEach(function(index){
-    userGuessDigits.splice(index, 1);
-    answerDigits.splice(index, 1);
-  })
+console.log("This is the removeIndices value: " + removeIndices);
 
+  for(var i = 0; i < removeIndices.length; i++){
+    var indexSpot = userGuessDigits.indexOf(removeIndices[i]);
+    userGuessDigits.splice(indexSpot, 1);
+    answerDigits.splice(indexSpot, 1);
+  };
+
+  console.log("this is the answer: " + answerDigits);
+  console.log("this was your guess: " + userGuessDigits);
+
+// Check if any numbers are right and in right spot
+// If theres a match, remove value from answers Digit
+var rnw = 0;
+for(var i = 0; i < userGuessDigits.length; i++){
+  if(answerDigits.includes(userGuessDigits[i])){
+    rnw++;
+    var matchedNum = parseInt(userGuessDigits[i]);
+    var removeIndicesRNW = answerDigits.findIndex(matchedNum);
+    answerDigits.splice(removeIndicesRNW,1);
+  }
+}
+
+console.log(rnr, rnw);
 
 // array.includes    ... or array.indexOf
 //
@@ -57,44 +80,43 @@ function convertToSingleNum(e) {
   //   })
 
 
-  var rnr = userGuessDigits.reduce(function(counter, digit, i){
-    if (digit == answerDigits[i]) {
-      counter++;
-      // remove this digit from both arrays...
-      userGuessDigits.splice(i, 1);
-      answerDigits.splice(i, 1);
-    }
-    return counter;
-  }, 0);
+  // var rnr = userGuessDigits.reduce(function(counter, digit, i){
+  //   if (digit == answerDigits[i]) {
+  //     counter++;
+  //     // remove this digit from both arrays...
+  //     userGuessDigits.splice(i, 1);
+  //     answerDigits.splice(i, 1);
+  //   }
+  //   return counter;
+  // }, 0);
 
 
+  //
+  //
+  // var userGuessNum = "";
+  //
+  // for (var i = 0; i < userGuessDigit.length; i++){
+  //   userGuessNum = userGuessNum + userGuessDigit[i]
+  // }
+  //
+  // var answer = mysteryNum.toString();
+  // var tempAnswer = answer;
+  // var rightGuessCount = 0;
+  // var closeGuessCount = 0;
+  //
+  // for(var i = 0; i <userGuessNum.length; i++){
+  //   if (tempAnswer.charAt(i) == userGuessNum.charAt(i)){
+  //     rightGuessCount++;
+  //     tempAnswer.splice(i, 1);
+  //     userGuessNum.splice(i,1);
+  //   }
+  // for (var i = 0; i < userGuessNum.Length; i++){
+  //   if (userGuessNum.charAt(i)) ==
+  // }
+  //
+  // }
 
 
-  var userGuessNum = "";
-
-  for (var i = 0; i < userGuessDigit.length; i++){
-    userGuessNum = userGuessNum + userGuessDigit[i]
-  }
-
-  var answer = mysteryNum.toString();
-  var tempAnswer = answer;
-  var rightGuessCount = 0;
-  var closeGuessCount = 0;
-
-  for(var i = 0; i <userGuessNum.length; i++){
-    if (tempAnswer.charAt(i) == userGuessNum.charAt(i)){
-      rightGuessCount++;
-      tempAnswer.splice(i, 1);
-      userGuessNum.splice(i,1);
-    }
-  for (var i = 0; i < userGuessNum.Length; i++){
-    if (userGuessNum.charAt(i)) ==
-  }
-
-  }
-
-  console.log("this is the answer: " + answer);
-  console.log("this was your guess: " + userGuessNum);
 }
 
 
