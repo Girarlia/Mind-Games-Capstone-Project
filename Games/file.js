@@ -30,6 +30,7 @@ function convertToSingleNum(e) {
   })
 
 console.log("This is the removeIndices value: " + removeIndices);
+console.log("This is the rnr value:" + rnr);
 
   for(var i = 0; i < removeIndices.length; i++){
     var indexSpot = userGuessDigits.indexOf(removeIndices[i]);
