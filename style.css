@@ -92,6 +92,38 @@ h2{
   font-size: 3em;
   border: 2px solid black;
 }
+
+.guessChart{
+  margin: 10px;
+}
+
+.outputTitle{
+  font-size: 3em;
+  padding: 10px;
+  font-style: bold;
+  text-decoration: underline;
+}
+
+td{
+  border-right: solid 2px black;
+  font-size: 2em;
+  padding: 40px 10px 40px 0;
+}
+
+td:first-child{
+  vertical-align: bottom;
+}
+
+tr:last-child td{
+  border-bottom: solid 2px black;
+}
+/*.guessChart{
+  height: 400px;
+  width: 600px;
+  border-left: solid 2px black;
+  border-bottom: solid 2px black;
+  margin: 70px;*/
+}
 /*#outputBox{
   border: black solid 2px;
 }*/

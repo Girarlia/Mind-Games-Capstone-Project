@@ -4,9 +4,19 @@
 var mysteryNum = 1234;
 var guessCounter = 0;
 
+// Create Line Graph
+var Chart = require('chart.js');
+var ctx = $("#myChart");
+var myLineChart = new Chart(ctx, {
+type: 'line',
+data: data,
+options: options
+});
 
 // VALIDATE NUMBER
 function convertToSingleNum(e) {
+
+  guessCounter++;
 
   var userGuessDigits = [
     $("#userGuess1").val(),
@@ -16,11 +26,8 @@ function convertToSingleNum(e) {
   ]
   var answerDigits = mysteryNum.toString().split('');
 
-  console.log("this is the answer: " + answerDigits);
-  console.log("this was your guess: " + userGuessDigits);
-
-
-// separated version...
+// Check if digit is right number in right spot
+// Create array of all digits in the right spot
   var rnr = 0;
   var removeIndices = userGuessDigits.map(function(digit, i){
     if (digit == answerDigits[i]) {
@@ -29,31 +36,55 @@ function convertToSingleNum(e) {
     }
   })
 
-console.log("This is the removeIndices value: " + removeIndices);
-console.log("This is the rnr value:" + rnr);
-
-  for(var i = 0; i < removeIndices.length; i++){
+// Remove nulls from array of all digits that are right
+  var cleanedRemoveIndices = removeIndices.filter(function(digit){
+    return digit != null;
+  });
+// Remove all correct digits from the answer and guess variables
+  for(var i = 0; i < cleanedRemoveIndices.length; i++){
     var indexSpot = userGuessDigits.indexOf(removeIndices[i]);
     userGuessDigits.splice(indexSpot, 1);
     answerDigits.splice(indexSpot, 1);
   };
 
-  console.log("this is the answer: " + answerDigits);
-  console.log("this was your guess: " + userGuessDigits);
-
-// Check if any numbers are right and in right spot
+// Check if any numbers are right but in the wrong spot
 // If theres a match, remove value from answers Digit
 var rnw = 0;
 for(var i = 0; i < userGuessDigits.length; i++){
   if(answerDigits.includes(userGuessDigits[i])){
     rnw++;
-    var matchedNum = parseInt(userGuessDigits[i]);
-    var removeIndicesRNW = answerDigits.findIndex(matchedNum);
+    var matchedNum = (userGuessDigits[i]);
+    var removeIndicesRNW = answerDigits.indexOf(matchedNum);
     answerDigits.splice(removeIndicesRNW,1);
+    console.log(answerDigits);
   }
 }
 
-console.log(rnr, rnw);
+console.log("Right Number in Right Position: " + rnr);
+console.log("Right Number in Wrong Position: "+ rnw);
+console.log("How many times have you guessed?: " + guessCounter);
+
+$("#userGuess1").val(""),
+$("#userGuess2").val(""),
+$("#userGuess3").val(""),
+$("#userGuess4").val("");
+
+// Create Right number right position Graph
+
+// Create <tr>
+// Create dot inside <tr>
+// Append to rowTwoRight
+// Create blank <td> for all others
+// connect to previous dot
+
+// Create Right number wrong position Graph
+
+// create dat
+// Append dot to last-child tr
+// connect to previous dot
+
+return rnr && rnw;
+
 
 // array.includes    ... or array.indexOf
 //

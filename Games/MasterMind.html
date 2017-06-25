@@ -24,22 +24,28 @@
 
     <h3 class = "guessANumber"> Guess a 4-digit Number: </h3>
 
-        <input type = "text" class = "guessBox" id = "userGuess1">
-        <input type = "text" class = "guessBox" id = "userGuess2">
-        <input type = "text" class = "guessBox" id = "userGuess3">
-        <input type = "text" class = "guessBox" id = "userGuess4">
+        <input type = "text" class = "guessBox" id = "userGuess1" maxlength="1">
+        <input type = "text" class = "guessBox" id = "userGuess2" maxlength="1">
+        <input type = "text" class = "guessBox" id = "userGuess3" maxlength="1">
+        <input type = "text" class = "guessBox" id = "userGuess4" maxlength="1">
 
         <input type = "submit" id = "userGuessButton">
 
       <div id = "outputBox">
-        <p> OUTPUT </p>
+        <p class = "outputTitle"> OUTPUT </p>
+
+        <canvas id="myChart" width="400" height="400"></canvas>
 
       </div>
 
+
+
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
   <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
   <script src="file.js"></script>
+
 </html>
