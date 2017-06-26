@@ -5,13 +5,56 @@ var mysteryNum = 1234;
 var guessCounter = 0;
 
 // Create Line Graph
-var Chart = require('chart.js');
+//var Chart = require('chart.js');
 var ctx = $("#myChart");
 var myLineChart = new Chart(ctx, {
-type: 'line',
-data: data,
-options: options
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        data: [0],
+        label: "Right Number in Right Location",
+        borderColor: "Green",
+        fill: false
+      }, {
+        data: [0],
+        label: "Right Number in Wrong Location",
+        borderColor: "Yellow",
+        fill: false
+      }, {
+        data: [0],
+        label: "Wrong Number",
+        borderColor: "Red",
+        fill: false
+        }
+      ]
+    },
+    options: {
+      scales: {
+            yAxes: [{
+                override: {
+                    stepWidth: 1,
+                    start: 0,
+                    steps: 1,
+                }
+            }]
+        }
+    }
 });
+
+function addData(chart, rnr,rnw,counter) {
+  chart.data.datasets[0].push({
+    label: counter,
+    data: rnr
+  })
+  chart.data.datasets[1].push({
+    data: rnw
+  })
+  chart.data.datasets[2].push({
+    data: (4-rnr-rnw)
+  })
+  myLineChart.update();
+}
 
 // VALIDATE NUMBER
 function convertToSingleNum(e) {
@@ -82,6 +125,8 @@ $("#userGuess4").val("");
 // create dat
 // Append dot to last-child tr
 // connect to previous dot
+
+addData(myLineChart, rnr,rnw,guessCounter);
 
 return rnr && rnw;
 

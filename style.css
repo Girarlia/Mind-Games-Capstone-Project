@@ -93,9 +93,9 @@ h2{
   border: 2px solid black;
 }
 
-.guessChart{
-  margin: 10px;
-}
+.myChart{
+  xAxisID: "Guess"
+  yAxisID: "Number Correct"
 
 .outputTitle{
   font-size: 3em;
