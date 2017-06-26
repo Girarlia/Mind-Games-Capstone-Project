@@ -29,30 +29,19 @@ var myLineChart = new Chart(ctx, {
         }
       ]
     },
-    options: {
-      scales: {
-            yAxes: [{
-                override: {
-                    stepWidth: 1,
-                    start: 0,
-                    steps: 1,
-                }
-            }]
-        }
+    options: {}
     }
-});
+);
 
-function addData(chart, rnr,rnw,counter) {
-  chart.data.datasets[0].push({
-    label: counter,
-    data: rnr
-  })
-  chart.data.datasets[1].push({
-    data: rnw
-  })
-  chart.data.datasets[2].push({
-    data: (4-rnr-rnw)
-  })
+function addData(chart, rnr,rnw, wrongNum, counter) {
+
+    chart.data.labels.push(counter);
+    chart.data.datasets[0].data.push(rnr);
+     console.log(chart.data.datasets[0].data);
+    chart.data.datasets[1].data.push(rnw)
+    console.log(chart.data.datasets[1].data);
+    chart.data.datasets[2].data.push(4 - rnr - rnw)
+    console.log(chart.data.datasets[2].data);
   myLineChart.update();
 }
 
@@ -107,6 +96,8 @@ console.log("Right Number in Right Position: " + rnr);
 console.log("Right Number in Wrong Position: "+ rnw);
 console.log("How many times have you guessed?: " + guessCounter);
 
+var wrongNum = 4-rnr-rnw;
+
 $("#userGuess1").val(""),
 $("#userGuess2").val(""),
 $("#userGuess3").val(""),
@@ -126,7 +117,7 @@ $("#userGuess4").val("");
 // Append dot to last-child tr
 // connect to previous dot
 
-addData(myLineChart, rnr,rnw,guessCounter);
+addData(myLineChart, rnr,rnw,wrongNum, guessCounter);
 
 return rnr && rnw;
 

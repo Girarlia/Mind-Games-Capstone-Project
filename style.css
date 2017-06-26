@@ -93,9 +93,12 @@ h2{
   border: 2px solid black;
 }
 
-.myChart{
-  xAxisID: "Guess"
-  yAxisID: "Number Correct"
+#myChart{
+  border: 30px;
+  height: 400px;
+  width: 300px;
+}
+
 
 .outputTitle{
   font-size: 3em;
@@ -117,16 +120,7 @@ td:first-child{
 tr:last-child td{
   border-bottom: solid 2px black;
 }
-/*.guessChart{
-  height: 400px;
-  width: 600px;
-  border-left: solid 2px black;
-  border-bottom: solid 2px black;
-  margin: 70px;*/
-}
-/*#outputBox{
-  border: black solid 2px;
-}*/
+
 p{
   font-size: 30px;
   font-weight: bold;
