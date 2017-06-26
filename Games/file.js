@@ -13,7 +13,7 @@ var myLineChart = new Chart(ctx, {
       fontSize: 50,
       },
     data: {
-      labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+      labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
       datasets: [{
         data: [0],
         label: "Right Number in Right Location",
@@ -22,7 +22,7 @@ var myLineChart = new Chart(ctx, {
       }, {
         data: [0],
         label: "Right Number in Wrong Location",
-        borderColor: "Yellow",
+        borderColor: "Orange",
         fill: false
       },
       // {
@@ -42,7 +42,7 @@ var myLineChart = new Chart(ctx, {
       scales: {
         xAxes: [{
           ticks: {
-                      fontSize: 40
+                      fontSize: 35
                   }
         }],
         yAxes: [{
@@ -133,7 +133,7 @@ $("#userGuess4").val("");
 addData(myLineChart, rnr,rnw,wrongNum, guessCounter);
 
 if (rnr == 4){
-  alert( "YOU WIN!!!");
+  alert( "YOU WIN!!! It only took you " + GuessCounter + " guesses!");
 }
 
 return rnr && rnw;
