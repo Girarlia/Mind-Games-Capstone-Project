@@ -1,6 +1,5 @@
 body{
   font-size: 16px;
-  max-width: 960px;
   margin: 0 auto;
   /*background-color: #34D1BF;*/
 }
@@ -15,6 +14,7 @@ body{
 
 .siteHeader{
   background-color: black;
+
 }
 header h1 {
   text-align: center;
@@ -50,6 +50,7 @@ h2{
   font-weight: bold;
   padding-top: 20px;
   padding-left: 10px;
+  text-align: center;
 }
 
 
@@ -59,14 +60,19 @@ h2{
 .guessANumber{
   font-size: 3em;
   padding: 60px 0 20px 10px;
+  text-align: center;
 }
 
 .guessBox{
-  width: 150px;
-  height: 150px;
-  border: 4px solid blue;
+  width: 120px;
+  height: 120px;
+  border: 4px solid black;
   text-align: center;
   font-size: 4em;
+}
+
+.inputDiv{
+  text-align: center;
 }
 
 #userGuess{
@@ -95,8 +101,6 @@ h2{
 
 #myChart{
   border: 30px;
-  height: 400px;
-  width: 300px;
 }
 
 
@@ -105,6 +109,7 @@ h2{
   padding: 10px;
   font-style: bold;
   text-decoration: underline;
+  text-align: center;
 }
 
 td{

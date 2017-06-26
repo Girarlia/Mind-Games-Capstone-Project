@@ -1,7 +1,7 @@
 
 // TODO: make sure that mysteryNum is always aa 4-digit number...
-// var mysteryNum = Math.floor(Math.random()*10000+1);
-var mysteryNum = 1234;
+var mysteryNum = Math.floor(Math.random()*10000+1);
+// var mysteryNum = 1234;
 var guessCounter = 0;
 
 // Create Line Graph
@@ -9,8 +9,11 @@ var guessCounter = 0;
 var ctx = $("#myChart");
 var myLineChart = new Chart(ctx, {
     type: 'line',
+    legend:{
+      fontSize: 50,
+      },
     data: {
-      labels: [],
+      labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
       datasets: [{
         data: [0],
         label: "Right Number in Right Location",
@@ -21,27 +24,45 @@ var myLineChart = new Chart(ctx, {
         label: "Right Number in Wrong Location",
         borderColor: "Yellow",
         fill: false
-      }, {
-        data: [0],
-        label: "Wrong Number",
-        borderColor: "Red",
-        fill: false
-        }
+      },
+      // {
+      //   data: [0],
+      //   label: "Wrong Number",
+      //   borderColor: "Red",
+      //   fill: false
+      //   }
       ]
     },
-    options: {}
+    options: {
+      legend:{
+        display: true,
+        labels:
+          {fontSize:22,
+          fontweight: "bold"}},
+      scales: {
+        xAxes: [{
+          ticks: {
+                      fontSize: 40
+                  }
+        }],
+        yAxes: [{
+          ticks: {
+                      fontSize: 40
+                  },
+          scaleStartValue : 0
+        }],
+
     }
-);
+        }
+        }
+    );
 
 function addData(chart, rnr,rnw, wrongNum, counter) {
 
-    chart.data.labels.push(counter);
+    // chart.data.labels.push(counter);
     chart.data.datasets[0].data.push(rnr);
-     console.log(chart.data.datasets[0].data);
     chart.data.datasets[1].data.push(rnw)
-    console.log(chart.data.datasets[1].data);
-    chart.data.datasets[2].data.push(4 - rnr - rnw)
-    console.log(chart.data.datasets[2].data);
+    // chart.data.datasets[2].data.push(wrongNum)
   myLineChart.update();
 }
 
@@ -57,6 +78,10 @@ function convertToSingleNum(e) {
     $("#userGuess4").val()
   ]
   var answerDigits = mysteryNum.toString().split('');
+
+  console.log(userGuessDigits);
+  // console.log(answerDigits);
+
 
 // Check if digit is right number in right spot
 // Create array of all digits in the right spot
@@ -91,140 +116,29 @@ for(var i = 0; i < userGuessDigits.length; i++){
     console.log(answerDigits);
   }
 }
+var wrongNum = 4-rnr-rnw;
 
 console.log("Right Number in Right Position: " + rnr);
 console.log("Right Number in Wrong Position: "+ rnw);
-console.log("How many times have you guessed?: " + guessCounter);
+// console.log("Wrong Numner and Wrong Position: "+ wrongNum);
+console.log("Guess Counter: " + guessCounter);
 
-var wrongNum = 4-rnr-rnw;
+
 
 $("#userGuess1").val(""),
 $("#userGuess2").val(""),
 $("#userGuess3").val(""),
 $("#userGuess4").val("");
 
-// Create Right number right position Graph
-
-// Create <tr>
-// Create dot inside <tr>
-// Append to rowTwoRight
-// Create blank <td> for all others
-// connect to previous dot
-
-// Create Right number wrong position Graph
-
-// create dat
-// Append dot to last-child tr
-// connect to previous dot
-
 addData(myLineChart, rnr,rnw,wrongNum, guessCounter);
 
+if (rnr == 4){
+  alert( "YOU WIN!!!");
+}
+
 return rnr && rnw;
-
-
-// array.includes    ... or array.indexOf
-//
-
-
-// non-fancy version...
-  // var rnr = userGuessDigits.map(function(digit, i){
-  //   if (digit == answerDigits[i]) {
-  //     return i;
-  //   }
-  // }).reduce(function(removeIndices, index){
-  //   userGuessDigits.splice(index, 1);
-  //   answerDigits.splice(index, 1);
-  //   return removeIndices.length;
-  // })
-
-// fancy version....
-  // var rnr = userGuessDigits
-  //   .map((digit, i) => (digit == answerDigits[i]) ? i : null)
-  //   .filter(el => !!el)
-  //   .reduce((removeIndices, index) => {
-  //       userGuessDigits.splice(index, 1);
-  //       answerDigits.splice(index, 1);
-  //       return removeIndices.length;
-  //   })
-
-
-  // var rnr = userGuessDigits.reduce(function(counter, digit, i){
-  //   if (digit == answerDigits[i]) {
-  //     counter++;
-  //     // remove this digit from both arrays...
-  //     userGuessDigits.splice(i, 1);
-  //     answerDigits.splice(i, 1);
-  //   }
-  //   return counter;
-  // }, 0);
-
-
-  //
-  //
-  // var userGuessNum = "";
-  //
-  // for (var i = 0; i < userGuessDigit.length; i++){
-  //   userGuessNum = userGuessNum + userGuessDigit[i]
-  // }
-  //
-  // var answer = mysteryNum.toString();
-  // var tempAnswer = answer;
-  // var rightGuessCount = 0;
-  // var closeGuessCount = 0;
-  //
-  // for(var i = 0; i <userGuessNum.length; i++){
-  //   if (tempAnswer.charAt(i) == userGuessNum.charAt(i)){
-  //     rightGuessCount++;
-  //     tempAnswer.splice(i, 1);
-  //     userGuessNum.splice(i,1);
-  //   }
-  // for (var i = 0; i < userGuessNum.Length; i++){
-  //   if (userGuessNum.charAt(i)) ==
-  // }
-  //
-  // }
-
 
 }
 
 
 var userGuess = $("#userGuessButton").on("click", convertToSingleNum);
-
-
-
-
-
-// On Submit:
-// Create: Box 1, Box 2, Box 3, Box 4
-// Edit Color: if first num is equal to first num of secret num: green, if first
-// num is equal to any num in secret num: yellow, else: red
-// Append: four boxes to outputBox
-
-// if guess != mysteryNum - clear userGuess field, add to guessCounter and restart process above
-// If guess == mysteryNum; congratulate! You guessed in "guessCounter" tries
-// Send guessCounter to database
-
-// ----------
-
-  // var p = $("<p></p>")
-
-  //
-  // if(userGuessLatest.length < 1){
-  //   p.html("Please Guess a Digit");
-  // }
-  //
-  // else if (userGuessLatest.length > 4){
-  //   p.html("You guessed a " + userGuessLatest.length + "-Digit Number. Please Guess a 4-Digit number.");
-  // }
-  //
-  // else {
-  //   // Need to figure out how to validate to make sure its all numbers
-  //   var rx = new RegExp("^\D")
-  //   if (rx.test(userGuessLatest)){
-  //     p.html("Please Guess a 4-Digit number");
-  //   } else {
-  //       var numberGuess = parseInt(userGuessLatest);
-  //       p.html("YAI you followed instructions")
-  //   }
-  // }
-  // $("#outputBox").append(p)
